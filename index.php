@@ -12,7 +12,7 @@ $folder_src = "";
 
 // Checkthe folder exists
 $f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['f']);
-if(!file_exists(PATH_TO_ROOT_DIR.'/'.$f.'-src')){
+if(!file_exists($f.'-src')){
 	echo "# no folder specified";
 	exit();
 }else{
@@ -23,7 +23,7 @@ if(!file_exists(PATH_TO_ROOT_DIR.'/'.$f.'-src')){
 
 
 // Fetch metadata
-$json = file_get_contents(PATH_TO_ROOT_DIR.'/'.$folder_src.'/meta.json');
+$json = file_get_contents($folder_src.'/meta.json');
 $meta = json_decode($json);
 
 
@@ -54,7 +54,7 @@ $meta = json_decode($json);
 
 			$imgs = new imgs();
 
-			$dir = new DirectoryIterator(PATH_TO_ROOT_DIR.'/'.$folder_src.'/');
+			$dir = new DirectoryIterator($folder_src.'/');
 			foreach ($dir as $fileinfo) {
 				if ($fileinfo->isFile()) {
 					$imgs->add_file($fileinfo);
