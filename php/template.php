@@ -18,7 +18,7 @@
 	<script>
 	$(function(){
 		$("#gallery").justifiedGallery({
-			rowHeight : 250,
+			rowHeight : 350,
 			lastRow : 'justify',
 			margins : 3,
 			captions: true,
@@ -57,7 +57,7 @@
 			echo "<h3>".$meta->description."</h3>";
 		?>
 	</header>
-	<main id="gallery">
+	<main id="gallery" class="gallery">
 		<?php
 
 			// _t = 100
