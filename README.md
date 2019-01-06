@@ -1,5 +1,6 @@
-# plonk
-🖼️ Basic SQL-less image gallery display
+# 🖼️ plonk
+
+> Basic SQL-less image gallery display
 
 ## Design requirements
 
