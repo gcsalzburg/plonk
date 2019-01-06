@@ -38,6 +38,15 @@
 
 4. The gallery will be available at the url `[root folder]/folder-name`
 
+## Future
+
+* Add in file downloader for original file (auto download script)
+* Add infinite scrolling
+* Add swipebox or other similar gallery viewer
+* Move template into Mustache template style page? (or remove Mustake entirely)
+* Add full album zip download?
+* Create script to generate thumbnails on server (with callback for one-by-one processing)
+
 ## Acknowledgements
 
 Makes good use of the Justified Gallery project: https://github.com/miromannino/Justified-Gallery
