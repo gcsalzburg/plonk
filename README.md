@@ -11,9 +11,10 @@
 
 ## How to use
 
-| See folder `demo-src` for an example of how to set up the folders
+> See folder `demo-src` for an example of how to set up the folders
 
-1. Create a folder called `folder-name-src` in root directory with this readme.
+1. Download this repo and upload it into a folder on your server
+2. Create a folder called `folder-name-src` in root directory with this readme.
 2. Add a file called `meta.json` to this folder with the following data as a minimum:
 
 ```json
