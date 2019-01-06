@@ -1,10 +1,8 @@
 <?php
 
-require_once('plonk/common.php');
+date_default_timezone_set('Europe/London');
 
-/* ************************************************************** */
-/* Load map                                                       */
-/* ************************************************************** */
+require_once('plonk/class.imgs.php');
 
 $folder = "";
 $folder_src = "";
