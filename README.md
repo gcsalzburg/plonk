@@ -11,6 +11,8 @@
 
 ## How to use
 
+| See folder `demo-src` for an example of how to set up the folders
+
 1. Create a folder called `folder-name-src` in root directory with this readme.
 2. Add a file called `meta.json` to this folder with the following data as a minimum:
 
@@ -32,6 +34,8 @@
 | h | 1600 pixel max on widest side | DSC03317_h.jpg |
 | k | 2048 pixel max on widest side | DSC03317_k.jpg |
 | o | Original source image | DSC03317_o.jpg |
+
+4. The gallery will be available at the url `[root folder]/folder-name`
 
 ## Acknowledgements
 

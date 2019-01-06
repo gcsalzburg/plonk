@@ -1,3 +1,4 @@
 # Add folders here to avoid committing them to git
 
 *-src/
+!demo-src/
