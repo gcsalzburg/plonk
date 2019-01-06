@@ -32,3 +32,7 @@
 | h | 1600 pixel max on widest side | DSC03317_h.jpg |
 | k | 2048 pixel max on widest side | DSC03317_k.jpg |
 | o | Original source image | DSC03317_o.jpg |
+
+## Acknowledgements
+
+Makes good use of the Justified Gallery project: https://github.com/miromannino/Justified-Gallery
