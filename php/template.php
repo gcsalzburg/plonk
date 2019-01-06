@@ -7,7 +7,9 @@
     <meta charset="utf-8">
 
 	<link rel="stylesheet" href="/assets/css/justifiedGallery.min.css">
+	<link rel="stylesheet" href="/assets/css/styles.css">
 <!-- <link rel="stylesheet" href="/map_custom/<?php //echo $_SESSION['map_url']; ?>/styles.css"> -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Tinos:400,700" rel="stylesheet">
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="/assets/js/jquery.justifiedGallery.min.js"></script>
@@ -20,7 +22,6 @@
 			lastRow : 'justify',
 			margins : 3,
 			captions: true,
-			waitThumbnailsLoad: false,
 			sizeRangeSuffixes: {
 				100 : '_t',
 				320 : '_n',
@@ -46,9 +47,15 @@
 </head>
 
 <body>
-
-	<header>
-
+	<?php
+		$json = file_get_contents(PATH_TO_ROOT_DIR.'/shimshal-src/meta.json');
+		$meta = json_decode($json);
+	?>
+	<header style="background-image:url('/shimshal-src/<?php echo $meta->header; ?>_k.jpg');">
+		<?php
+			echo "<h1>".$meta->title."</h1>";
+			echo "<h3>".$meta->description."</h3>";
+		?>
 	</header>
 	<main id="gallery">
 		<?php
