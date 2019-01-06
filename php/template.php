@@ -1,7 +1,16 @@
-<!doctype html>
+<?php
+
+// Fetch metadata
+$json = file_get_contents(PATH_TO_ROOT_DIR.'/'.$folder_src.'/meta.json');
+$meta = json_decode($json);
+
+
+?><!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
+
+	<title><?php echo $meta->title; ?> Gallery</title>
 
 	<link rel="stylesheet" href="/assets/css/justifiedGallery.min.css">
 	<link rel="stylesheet" href="/assets/css/styles.css">
@@ -9,11 +18,7 @@
 </head>
 
 <body>
-	<?php
-		$json = file_get_contents(PATH_TO_ROOT_DIR.'/shimshal-src/meta.json');
-		$meta = json_decode($json);
-	?>
-	<header style="background-image:url('/shimshal-src/<?php echo $meta->header; ?>_k.jpg');">
+	<header style="background-image:url('/<?php echo $folder_src.'/'.$meta->header; ?>_k.jpg');">
 		<?php
 			echo "<h1>".$meta->title."</h1>";
 			echo "<h3>".$meta->description."</h3>";
@@ -22,27 +27,20 @@
 	<main id="gallery" class="gallery">
 		<?php
 
-			// _t = 100
-			// _n = 320
-			// _c = 800
-			// _h = 1600
-			// _k = 2048
-			// _o = original
-
 			$count = 0;
 
 
 			$imgs = new imgs();
 
-			$dir = new DirectoryIterator(PATH_TO_ROOT_DIR.'/shimshal-src/');
+			$dir = new DirectoryIterator(PATH_TO_ROOT_DIR.'/'.$folder_src.'/');
 			foreach ($dir as $fileinfo) {
 				if ($fileinfo->isFile()) {
 					$imgs->add_file($fileinfo);
 				}
 			}
 			foreach($imgs->get_thumbs_array() as $k => $img){
-				echo '<a href="../shimshal-src/'.$img['h'].'">';
-					echo '<img alt="'.$k.'" src="/shimshal-src/'.$img['t'].'"/>';
+				echo '<a href="../'.$folder_src.'/'.$img['h'].'">';
+					echo '<img alt="'.$k.'" src="/'.$folder_src.'/'.$img['t'].'"/>';
 				echo '</a>';
 			}
 
