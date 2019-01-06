@@ -1,5 +1,14 @@
 <?php
 
+
+// Suffix information
+// _t = 100
+// _n = 320
+// _c = 800
+// _h = 1600
+// _k = 2048
+// _o = original
+            
 class imgs{
 
     protected $img_array = array();
