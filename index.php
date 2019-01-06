@@ -1,6 +1,6 @@
 <?php
 
-require_once('php/common.php');
+require_once('plonk/common.php');
 
 /* ************************************************************** */
 /* Load map                                                       */
@@ -34,8 +34,8 @@ $meta = json_decode($json);
 
 	<title><?php echo $meta->title; ?> Gallery</title>
 
-	<link rel="stylesheet" href="/assets/css/justifiedGallery.min.css">
-	<link rel="stylesheet" href="/assets/css/styles.css">
+	<link rel="stylesheet" href="/plonk/assets/css/justifiedGallery.min.css">
+	<link rel="stylesheet" href="/plonk/assets/css/styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Tinos:400,700" rel="stylesheet">
 </head>
 
@@ -72,8 +72,8 @@ $meta = json_decode($json);
 	</main>
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="/assets/js/scripts.js"></script>
-	<script src="/assets/js/jquery.justifiedGallery.min.js"></script>
+	<script src="/plonk/assets/js/scripts.js"></script>
+	<script src="/plonk/assets/js/jquery.justifiedGallery.min.js"></script>
 	
 </body>
 </html>

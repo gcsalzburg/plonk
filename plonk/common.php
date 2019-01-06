@@ -7,8 +7,8 @@
 define("PATH_TO_ROOT_DIR",'/home/gcave/photos.67hours.co.uk');
 
 // TODO: Improve on having this absolute URL here...
-require_once(PATH_TO_ROOT_DIR.'/php/lib/mustache.php');
-require_once(PATH_TO_ROOT_DIR.'/php/class.imgs.php');
+require_once(PATH_TO_ROOT_DIR.'/plonk/lib/mustache.php');
+require_once(PATH_TO_ROOT_DIR.'/plonk/class.imgs.php');
 
 
 /* ************************************************************** */
