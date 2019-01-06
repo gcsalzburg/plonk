@@ -13,7 +13,7 @@ class imgs{
 
     protected $img_array = array();
 
-    private $valid_suffix = array('t','n','c','h','k');
+    private $valid_suffix = array('t','n','c','h','k','o');
 
     public function add_file($fileinfo){
 
