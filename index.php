@@ -8,10 +8,15 @@ require_once('php/common.php');
 
 
 // Checkthe folder exists
-if(!file_exists(PATH_TO_ROOT_DIR.'/'.$_GET['f'])){
+$f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['f']);
+if(!file_exists(PATH_TO_ROOT_DIR.'/'.$f.'-src')){
 	echo "# no folder specified";
 	exit();
+}else{
+	$folder = $f;
 }
+
+
 
 /*
 // Now fetch the page content
