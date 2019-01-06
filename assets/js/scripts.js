@@ -11,4 +11,15 @@ $(function(){
             2048 : '_k'
         }
     });
+/*
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+          for (var i = 0; i < 5; i++) {
+            $('#gallery').append('<a>' +
+                '<img src="http://path/to/image" />' + 
+                '</a>');
+          }
+          $('#gallery').justifiedGallery('norewind');
+        }
+      });*/
 });
