@@ -2,7 +2,7 @@ $(function(){
     $("#gallery").justifiedGallery({
         rowHeight : 350,
         margins : 3,
-        captions: true,
+        captions: false,
         sizeRangeSuffixes: {
             100 : '_t',
             320 : '_n',
@@ -10,6 +10,16 @@ $(function(){
             1600 : '_h',
             2048 : '_k'
         }
+    }).on('jg.complete',function(){
+        $(this).children().each(function(i){
+            $(this).append('<a href="'+$(this).attr('data-orig')+'" class="download_orig" target="_blank">Download Original</a>');
+        });
+    });
+
+    $("#gallery").on('mouseenter','.thumb',function(){
+        $(this).addClass('hover');
+    }).on('mouseleave','.thumb',function(){
+        $(this).removeClass('hover');
     });
 /*
     $(window).scroll(function() {
