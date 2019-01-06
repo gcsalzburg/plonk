@@ -6,26 +6,6 @@
 	<link rel="stylesheet" href="/assets/css/justifiedGallery.min.css">
 	<link rel="stylesheet" href="/assets/css/styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Tinos:400,700" rel="stylesheet">
-
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="/assets/js/jquery.justifiedGallery.min.js"></script>
-
-	<script>
-	$(function(){
-		$("#gallery").justifiedGallery({
-			rowHeight : 350,
-			margins : 3,
-			captions: true,
-			sizeRangeSuffixes: {
-				100 : '_t',
-				320 : '_n',
-				800 : '_c', 
-				1600 : '_h',
-				2048 : '_k'
-			}
-		});
-	});
-	</script>
 </head>
 
 <body>
@@ -70,5 +50,9 @@
 
 		?>
 	</main>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="/assets/js/jquery.justifiedGallery.min.js"></script>
+	
 </body>
 </html>
