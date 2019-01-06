@@ -10,3 +10,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^([a-zA-Z0-9\-_]+)?$ index.php?f=$1 [QSA,NC,L]
+RewriteRule ^([a-zA-Z0-9\-_]+)/?$ index.php?f=$1 [QSA,NC,L]
