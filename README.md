@@ -47,6 +47,7 @@
 * Improve `DOWNLOAD ORIGINAL` design with icon and transparency
 * Add full album zip download?
 * Create script to generate thumbnails on server (with callback for one-by-one processing)
+* Add URL parser to description in meta data
 
 ## Acknowledgements
 
