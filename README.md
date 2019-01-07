@@ -22,7 +22,7 @@
 {
     "header": "Basename (without suffix) of the file to use as header image, e.g. DSC00317",
     "title": "Title of album",
-    "description": "Sentence or two about the album"
+    "description": "Sentence or two about the album. Can include links."
 }
 ```
 
