@@ -59,7 +59,7 @@ $meta = json_decode($json);
 				}
 			}
 			foreach($imgs->get_thumbs_array() as $k => $img){
-				echo '<a href="/'.$folder_src.'/'.$img['h'].'" class="thumb" data-orig="/'.$folder_src.'/'.$img['o'].'">';
+				echo '<a href="/'.$folder_src.'/'.$img['h'].'" class="thumb" data-folder="'.$folder.'" data-filename="'.$k.'">';
 					echo '<img alt="'.$k.'" src="/'.$folder_src.'/'.$img['t'].'"/>';
 				echo '</a>';
 			}

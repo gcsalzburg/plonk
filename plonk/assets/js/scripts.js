@@ -12,7 +12,7 @@ $(function(){
         }
     }).on('jg.complete',function(){
         $(this).children().each(function(i){
-            $(this).append('<a href="'+$(this).attr('data-orig')+'" class="download_orig" target="_blank">Download Original</a>');
+            $(this).append('<a href="/d/'+$(this).attr('data-folder')+'/'+$(this).attr('data-filename')+'" class="download_orig" target="_blank">Download Original</a>');
         });
     });
 
