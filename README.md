@@ -43,7 +43,8 @@ This projects requires a server running PHP7 or later (or probably earlier too).
 
 ## Future
 
-* Add full album zip download?
+* Add full album zip download
+* Add front page with list of all albums
 * Create script to generate thumbnails on server (with callback for one-by-one processing)
 
 ## Acknowledgements
