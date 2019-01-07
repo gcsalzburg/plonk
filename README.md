@@ -42,7 +42,6 @@
 ## Future
 
 * Add infinite scrolling
-* Add swipebox or other similar gallery viewer
 * Add full album zip download?
 * Create script to generate thumbnails on server (with callback for one-by-one processing)
 
