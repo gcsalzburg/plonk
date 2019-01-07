@@ -7,23 +7,23 @@ require_once('class.imgs.php');
 define("IMGS_PER_FETCH",25);
 
 
-$f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['f']);
-if(!file_exists('../'.$f.'-src')){
-	echo "# no folder specified";
-	exit();
-}else{
-	$folder = $f;
-	$folder_src = $folder."-src";
-}
-
-$start = preg_replace("/[^0-9]/","",$_GET['s']);
-
 $rtn_array = array(
     "has_imgs" => false,
     "imgs" => array(),
     "next" => 0,
     "is_end" => false
 );
+
+$f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['folder']);
+if(!file_exists('../'.$f.'-src')){
+    echo json_encode($rtn_array);
+	exit();
+}else{
+	$folder = $f;
+	$folder_src = $folder."-src";
+}
+
+$start = preg_replace("/[^0-9]/","",$_GET['start']);
 
 if(is_numeric($start)){
 
@@ -59,7 +59,5 @@ if(is_numeric($start)){
 }
 
 echo json_encode($rtn_array);
-
-
 
 ?>

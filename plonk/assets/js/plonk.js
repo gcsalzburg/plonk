@@ -44,10 +44,7 @@ $(function(){
     function fetch_next(){
         var next = $("#gallery").attr('data-next');
         var folder = $("#gallery").attr('data-folder');
-        $.getJSON("/plonk/fetch.php",{
-            f: folder,
-            s: next
-        }).done(function(data){
+        $.getJSON("/f/"+folder+"/"+next).done(function(data){
             if(data.has_imgs){
                 $.each(data.imgs, function(i, item){
                     $("#gallery").append('<a href="'+item.link+'" class="thumb" data-folder="'+item.folder+'" data-filename="'+item.filename+'">' +

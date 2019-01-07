@@ -13,3 +13,4 @@ RewriteRule ^([a-zA-Z0-9\-_]+)?$ index.php?f=$1 [QSA,NC,L]
 RewriteRule ^([a-zA-Z0-9\-_]+)/?$ index.php?f=$1 [QSA,NC,L]
 
 RewriteRule ^d/([a-zA-Z0-9\-_]+)/([a-zA-Z0-9\-_]+)?$ plonk/download.php?folder=$1&img=$2 [QSA,NC,L]
+RewriteRule ^f/([a-zA-Z0-9\-_]+)/([0-9]+)?$ plonk/fetch.php?folder=$1&start=$2 [QSA,NC,L]
