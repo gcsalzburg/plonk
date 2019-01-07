@@ -1,3 +1,6 @@
+::-moz-selection { background: rgba(0,0,0,0.8); }
+::selection { background: rgba(0,0,0,0.8); }
+
 html{
      margin:0;
 }
@@ -47,6 +50,9 @@ h3{
     margin: 0 auto;
     position: relative;
     z-index: 30;
+}
+h3 a{
+    color: #fff;
 }
 
 .gallery{

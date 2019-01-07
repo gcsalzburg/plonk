@@ -24,6 +24,9 @@ if(!file_exists($f.'-src')){
 $json = file_get_contents($folder_src.'/meta.json');
 $meta = json_decode($json);
 
+$meta->description = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
+	"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta->description);
+
 
 ?><!doctype html>
 <html lang="en">
