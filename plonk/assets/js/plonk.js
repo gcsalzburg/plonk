@@ -1,3 +1,7 @@
+//
+// Main PLONK scripts
+//
+
 $(function(){
     $("#gallery").justifiedGallery({
         rowHeight : 350,

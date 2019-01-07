@@ -37,7 +37,7 @@ $meta->description = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\
 
 	<link rel="stylesheet" href="/plonk/assets/css/justifiedGallery.min.css">
 	<link rel="stylesheet" href="/plonk/assets/css/swipebox.min.css">
-	<link rel="stylesheet" href="/plonk/assets/css/styles.css">
+	<link rel="stylesheet" href="/plonk/assets/css/plonk.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Tinos:400,700" rel="stylesheet">
 </head>
 
@@ -53,7 +53,7 @@ $meta->description = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 	<script src="/plonk/assets/js/jquery.justifiedGallery.min.js"></script>
 	<script src="/plonk/assets/js/jquery.swipebox.min.js"></script>
-	<script src="/plonk/assets/js/scripts.js"></script>
+	<script src="/plonk/assets/js/plonk.js"></script>
 	
 </body>
 </html>
