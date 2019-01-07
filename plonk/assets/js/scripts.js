@@ -14,6 +14,8 @@ $(function(){
         $(this).children().each(function(i){
             $(this).append('<a href="/d/'+$(this).attr('data-folder')+'/'+$(this).attr('data-filename')+'" class="download_orig" target="_blank">Download Original</a>');
         });
+        $('.thumb').swipebox();
+
     });
 
     $("#gallery").on('mouseenter','.thumb',function(){
