@@ -14,7 +14,9 @@
 
 > See folder `demo-src` for an example of how to set up the folders
 
-1. Download this repo and upload it into a folder on your server
+This projects requires a server running PHP7 or later (or probably earlier too).
+
+1. [Download this repo here](https://github.com/gcsalzburg/plonk/archive/master.zip) and upload it into a folder on your server
 2. Create a folder called `folder-name-src` in root directory with this readme.
 2. Add a file called `meta.json` to this folder with the following data as a minimum:
 
@@ -41,7 +43,6 @@
 
 ## Future
 
-* Add infinite scrolling
 * Add full album zip download?
 * Create script to generate thumbnails on server (with callback for one-by-one processing)
 
