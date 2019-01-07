@@ -1,14 +1,9 @@
 <?php
 
-date_default_timezone_set('Europe/London');
-
-require_once('plonk/class.imgs.php');
-
 $folder = "";
 $folder_src = "";
 
-
-// Checkthe folder exists
+// Check the folder exists
 $f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['f']);
 if(!file_exists($f.'-src')){
 	echo "# no folder specified";
