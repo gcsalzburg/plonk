@@ -91,6 +91,6 @@ h3 a{
 .download_orig:hover{
     text-decoration:underline;
 }
-.hover .download_orig{
+.thumb:hover .download_orig{
     opacity: 1;
 }
