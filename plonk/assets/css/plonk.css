@@ -29,6 +29,16 @@ header:before{
     background:rgba(0,0,0,0.5);
 }
 
+footer{
+    text-align: center;
+    margin: 4em 0;
+    font-size: 0.9em;
+    color: rgba(33,33,33,1);
+}
+footer a{
+    color: rgba(33,33,33,1);
+}
+
 h1{
     font-family: 'Source Sans Pro', sans-serif;
     color: #fff;

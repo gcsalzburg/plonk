@@ -37,13 +37,17 @@ $meta->description = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\
 </head>
 
 <body>
+
 	<header style="background-image:url('/<?php echo $folder_src.'/'.$meta->header; ?>_k.jpg');">
 		<?php
 			echo "<h1>".$meta->title."</h1>";
 			echo "<h3>".$meta->description."</h3>";
 		?>
 	</header>
+
 	<main id="gallery" class="gallery" data-next="0" data-folder="<?php echo $folder; ?>"></main>
+
+	<footer><a href="https://github.com/gcsalzburg/plonk">Plonk Gallery</a> © George Cave</footer> 
 
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 	<script src="/plonk/assets/js/jquery.justifiedGallery.min.js"></script>
