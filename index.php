@@ -48,9 +48,9 @@ $meta->description = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\
 			echo "<h3>".$meta->description."</h3>";
 		?>
 	</header>
-	<main id="gallery" class="gallery">
+	<main id="gallery" class="gallery" data-next="0" data-folder="<?php echo $folder; ?>">
 		<?php
-
+/*
 			$count = 0;
 
 
@@ -68,11 +68,11 @@ $meta->description = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\
 				echo '</a>';
 			}
 
-			
+			*/
 
 		?>
 	</main>
-	
+
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 	<script src="/plonk/assets/js/jquery.justifiedGallery.min.js"></script>
 	<script src="/plonk/assets/js/jquery.swipebox.min.js"></script>
