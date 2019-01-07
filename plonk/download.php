@@ -25,8 +25,8 @@ function get_image($filename,$title){
 }
 
 // Process URL params
-$folder =  preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['folder']);
-$img = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['img']);
+$folder =  substr(preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['folder']),0,100);
+$img = substr(preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['img']),0,200);
 
 $request_file = '../' . $folder . '-src/' . $img . '_o.jpg';
 
