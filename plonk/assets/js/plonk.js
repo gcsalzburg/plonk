@@ -34,27 +34,35 @@ $(function(){
     });
 
     // Scroll handler for infinite scrolling
+
+    var is_fetching = false;
+    var bottom_tolerance = 150;
+
     $(window).scroll(function() {
-        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+        if($(window).scrollTop() + $(window).height() >= ($(document).height()-bottom_tolerance)) {
             fetch_next();
         }
     });
 
     // Call function to load next items for infinite scroller
     function fetch_next(){
-        var next = $("#gallery").attr('data-next');
-        var folder = $("#gallery").attr('data-folder');
-        $.getJSON("/f/"+folder+"/"+next).done(function(data){
-            if(data.has_imgs){
-                $.each(data.imgs, function(i, item){
-                    $("#gallery").append('<a href="'+item.link+'" class="thumb" data-folder="'+item.folder+'" data-filename="'+item.filename+'">' +
-                    '<img alt="'+item.alt+'" src="'+item.src+'">' +
-                    '</a>');
-                }); 
-                $('#gallery').justifiedGallery('norewind'); 
-            }
-            $("#gallery").attr('data-next',data.next);
-        });
+        if(!is_fetching){
+            is_fetching = true;
+            var next = $("#gallery").attr('data-next');
+            var folder = $("#gallery").attr('data-folder');
+            $.getJSON("/f/"+folder+"/"+next).done(function(data){
+                if(data.has_imgs){
+                    $.each(data.imgs, function(i, item){
+                        $("#gallery").append('<a href="'+item.link+'" class="thumb" data-folder="'+item.folder+'" data-filename="'+item.filename+'">' +
+                        '<img alt="'+item.alt+'" src="'+item.src+'">' +
+                        '</a>');
+                    }); 
+                    $('#gallery').justifiedGallery('norewind'); 
+                }
+                $("#gallery").attr('data-next',data.next);
+                is_fetching = false;
+            });
+        }
     }
 
     fetch_next();
