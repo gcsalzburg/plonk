@@ -14,12 +14,19 @@ if(!file_exists($f.'-src')){
 }
 
 
-// Fetch metadata
-$json = file_get_contents($folder_src.'/meta.json');
-$meta = json_decode($json);
 
-$meta->description = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
-	"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta->description);
+// Fetch metadata
+if(!file_exists($folder_src.'/meta.json')){
+	$meta['title'] = "Mystery album";
+	$meta['description'] = "Add a meta.json file to set this title";
+}else{
+	$json = file_get_contents($folder_src.'/meta.json',true);
+	$meta = json_decode($json);
+
+	$meta['description'] = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
+		"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta['description']);
+}
+
 
 // Print page
 // TODO: Move to mustache template
@@ -38,10 +45,10 @@ $meta->description = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\
 
 <body>
 
-	<header style="background-image:url('/<?php echo $folder_src.'/'.$meta->header; ?>_k.jpg');">
+	<header style="background-image:url('/<?php echo $folder_src.'/'.$meta['header']; ?>_k.jpg');">
 		<?php
-			echo "<h1>".$meta->title."</h1>";
-			echo "<h3>".$meta->description."</h3>";
+			echo "<h1>".$meta['title']."</h1>";
+			echo "<h3>".$meta['description']."</h3>";
 		?>
 	</header>
 
