@@ -20,8 +20,8 @@ if(!file_exists($folder_src.'/meta.json')){
 	$meta['title'] = "Mystery album";
 	$meta['description'] = "Add a meta.json file to set this title";
 }else{
-	$json = file_get_contents($folder_src.'/meta.json',true);
-	$meta = json_decode($json);
+	$json = file_get_contents($folder_src.'/meta.json');
+	$meta = json_decode($json,true);
 
 	$meta['description'] = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
 		"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta['description']);
