@@ -61,6 +61,9 @@ $(function(){
                 }
                 $("#gallery").attr('data-next',data.next);
                 is_fetching = false;
+            }).fail(function() {
+                // I wonder why it failed?
+                is_fetching = false;
             });
         }
     }
