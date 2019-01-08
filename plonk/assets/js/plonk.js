@@ -20,7 +20,8 @@ $(function(){
 
         // Once gallery loaded, append download links to each item
         $(this).children().each(function(i){
-            $(this).append('<a href="/d/'+$(this).attr('data-folder')+'/'+$(this).attr('data-filename')+'" class="download_orig" target="_blank">Download Original</a>');
+            var download_link = '/d/'+$(this).attr('data-folder')+'/'+$(this).attr('data-filename');
+            $(this).append('<a href="'+download_link+'" class="download_orig" target="_blank">Download Original</a>');
         });
 
         // Initialise swipebox
