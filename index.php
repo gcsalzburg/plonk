@@ -35,7 +35,7 @@ if(!file_exists($folder_src.'/meta.json')){
 <head>
     <meta charset="utf-8">
 
-	<title><?php echo $meta->title; ?> Gallery</title>
+	<title><?php echo $meta['title']; ?> Gallery</title>
 
 	<link rel="stylesheet" href="/plonk/assets/css/justifiedGallery.min.css">
 	<link rel="stylesheet" href="/plonk/assets/css/swipebox.min.css">
