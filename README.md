@@ -1,16 +1,14 @@
 # 🖼️ plonk
 
-> Basic SQL-less image gallery display
-> 
 > See it here: https://photos.67hours.co.uk/demo/
 
-## Design requirements
+Plonk is a super clean, basic, image gallery.
+It does just two things well: 
 
-1. Provide a simple, Flickr style image wall for display of photos
-2. Easy to configure - upload photos to a folder on server and display should work
-3. Allow download of original images for any in the set
-4. Allow simple customisation of display (e.g. choose a header image)
+* Display a grid of your photos, sorted into albums
+* Allow easy download of any originals for the pictures
 
+This is achieved with no admin interface and no database. Upload your photos to a folder on your server and you're done!
 
 ## How to use
 
@@ -18,18 +16,9 @@
 
 This projects requires a server running PHP7 or later (or probably earlier too).
 
-1. [Download this repo here](https://github.com/gcsalzburg/plonk/archive/master.zip) and upload it into a folder on your server
-2. Create a folder called `folder-name-src` in root directory with this readme.
-2. Add a file called `meta.json` to this folder with the following data as a minimum:
-
-```json
-{
-    "header": "Basename (without suffix) of the file to use as header image, e.g. DSC00317",
-    "title": "Title of album",
-    "description": "Sentence or two about the album. Can include links."
-}
-```
-
+1. [Download this project here](https://github.com/gcsalzburg/plonk/archive/master.zip) and upload it into a folder on your server
+2. Create a folder called `albumname-src` in the directory next to this readme.
+2. ~~Upload your original photos into the `albumname-src` folder~~
 3. Add files to the album with suffixes as follows:
 
 | _ | How to generate | Example |
@@ -41,14 +30,33 @@ This projects requires a server running PHP7 or later (or probably earlier too).
 | k | 2048 pixel max on widest side | DSC03317_k.jpg |
 | o | Original source image | DSC03317_o.jpg |
 
-4. The gallery will be available at the url `[root folder]/folder-name`
+4. The gallery will be available at the url `http://yourwebsite.com/folder-you-put-it-in/albumname`
+
+## Customisation
+
+A small amount of page customisation is possible.
+
+Add a file called `meta.json` to the album folder wWith some of the following options:
+
+```json
+{
+    "header": "Basename (without suffix) of the file to use as header image, e.g. DSC00317",
+    "title": "Title of album",
+    "description": "Sentence or two about the album. Can include links."
+}
+```
 
 ## Future
 
 * Add full album zip download
-* Add front page with list of all albums
-* Create script to generate thumbnails on server (with callback for one-by-one processing)
+* Create script to generate thumbnails on server on first load, for any images found that don't yet have thumbnails (with callback for one-by-one processing)
+* Add original download link to swipebox view
 
 ## Acknowledgements
 
-Makes good use of the Justified Gallery project: https://github.com/miromannino/Justified-Gallery
+This project is possible thanks to these wonderful projects:
+
+* [Justified Gallery project](https://github.com/miromannino/Justified-Gallery) - creates the main gallery view
+* [Swipebox](http://brutaldesign.github.io/swipebox/) - Touchable jQuery lightbox
+* [Mustache](http://mustache.github.io/) - Logic-less templates
+* [jQuery](http://jquery.com/) - JS library for Swipebox & Justified Gallery
