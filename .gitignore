@@ -1,6 +1,6 @@
-# Add folders here to avoid committing them to git
-
+# Do not commit -src folders, except for the demo folder!
 *-src/
 !demo-src/
 
+# Don't save favicon
 favicon.ico
