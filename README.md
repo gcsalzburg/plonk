@@ -1,6 +1,6 @@
 # 🖼️ plonk
 
-> See it here: https://photos.67hours.co.uk/demo/
+> See it here: https://photos.67hours.co.uk/
 
 Plonk is a super clean, basic, image gallery.
 It does just two things well: 
@@ -51,6 +51,8 @@ Add a file called `meta.json` to the album folder wWith some of the following op
 * Add full album zip download
 * Create script to generate thumbnails on server on first load, for any images found that don't yet have thumbnails (with callback for one-by-one processing)
 * Add original download link to swipebox view
+* Add size scaling icons for grid display (just 2?)
+* Fix URL parsing in descriptions
 
 ## Acknowledgements
 
