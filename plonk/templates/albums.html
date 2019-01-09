@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Gallery</title>
+    
+	<link rel="stylesheet" href="/plonk/assets/css/plonk.css">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Tinos:400,700" rel="stylesheet">
+</head>
+
+<body>
+
+    
+	<main id="albums" class="albums">
+        {{#albums}}
+            <a class="album" style="background-image:url('{{background}}')" href="/{{folder}}">
+                <h2>{{title}}</h2>
+            </a>
+        {{/albums}}
+    </main>
+
+	<footer><a href="https://github.com/gcsalzburg/plonk">Plonk Gallery</a> © George Cave</footer> 	
+</body>
+</html>

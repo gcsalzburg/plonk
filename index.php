@@ -1,37 +1,86 @@
 <?php
 
+// Includes
 require_once('plonk/class.mustache.php');
 
-$folder = "";
-$folder_src = "";
-
+$template_html = "";
 $template = array();
+
 
 // Check the folder exists
 $f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['f']);
-if(!file_exists($f.'-src')){
-	echo "# no folder specified";
-	exit();
+
+if($f != ""){
+	// Must be showing a single gallery
+	$template_html = 'plonk/templates/gallery.html';
+
+	if(!file_exists($f.'-src')){
+		$template['title'] = "Unknown folder";
+	}else{
+		$template['folder'] = $f;
+		$template['folder_src'] = $f."-src";
+
+		// Fetch metadata
+		if(!file_exists($template['folder_src'].'/meta.json')){
+			$template['title'] = "Mystery album";
+			$template['description'] = "Add a meta.json file to set this title";
+		}else{
+			$json = file_get_contents($template['folder_src'].'/meta.json');
+			$meta = json_decode($json,true);
+
+			$template['title'] = $meta['title'];
+			$template['description'] = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
+				"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta['description']);
+			$template['background_img'] = '/'.$template['folder_src'].'/'.$meta['header'].'_k.jpg';
+		}
+	}
 }else{
-	$template['folder'] = $f;
-	$template['folder_src'] = $f."-src";
+	// Display grid of all albums instead
+	$template_html = 'plonk/templates/albums.html';
+
+	$template['albums'] = array();
+
+	$dir = new DirectoryIterator(dirname(__FILE__));
+	foreach ($dir as $fileinfo) {
+		if ($fileinfo->isDir()) {
+			$filename = $fileinfo->getFilename();
+			if( (substr($filename, -4) === "-src") && ($filename != "demo-src") ){
+				// Must be a -src folder
+				// Check for meta.json
+				if(file_exists($filename.'/meta.json')){
+					// If meta.json exists, display block for this album
+					$json = file_get_contents($filename.'/meta.json');
+					$meta = json_decode($json,true);
+
+					// Get date from thumbnail of header image, for ordering purposes
+					$exif_date = exif_read_data($filename.'/'.$meta['header'].'_t.jpg')['DateTimeOriginal'];
+					$thumb_date = date_parse($exif_date);
+					
+					// Prepare template for this album
+					$template['albums'][] = array(
+						"title" 		=> $meta['title'],
+						"background" 	=> '/'.$filename.'/'.$meta['header'].'_c.jpg',
+						"folder"		=> substr($filename,0,strlen($filename)-4),
+						"date_time"		=> $thumb_date['year']."/".$thumb_date['month'],
+						"ts"			=> strtotime($exif_date)
+					);
+
+				}
+			}
+		}
+	}
+	if(sizeof($template['albums']) > 0){
+		// Neat trick from: https://stackoverflow.com/questions/2699086/
+		usort($template['albums'], function($a, $b) {
+			return $b['ts'] <=> $a['ts'];
+		});
+	}else{
+		echo "No albums found";
+	}
 }
 
 
-// Fetch metadata
-if(!file_exists($template['folder_src'].'/meta.json')){
-	$template['title'] = "Mystery album";
-	$template['description'] = "Add a meta.json file to set this title";
-}else{
-	$json = file_get_contents($template['folder_src'].'/meta.json');
-	$meta = json_decode($json,true);
-
-	$template['title'] = $meta['title'];
-	$template['description'] = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
-		"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta['description']);
-	$template['background_img'] = '/'.$template['folder_src'].'/'.$meta['header'].'_k.jpg';
-}
-
+// Render output
 $m = new Mustache_Engine;
-echo $m->render(file_get_contents('plonk/templates/album.html'),$template);
+echo $m->render(file_get_contents($template_html),$template);
 ?>
