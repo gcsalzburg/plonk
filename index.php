@@ -43,6 +43,7 @@ if($f != ""){
 			$template['process_total'] = sizeof($to_process);
 			$template['process_current'] = 1;
 			$template['process_filename'] = $to_process[0];
+			$template['process_filename_no_path'] = basename($to_process[0]);
 		}else{
 			$template['to_process'] = false;	
 		}
