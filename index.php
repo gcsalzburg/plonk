@@ -64,7 +64,7 @@ if($f != ""){
 
 					// Count photos in folder
 					// We use the _t references for this purpose
-					$num_photos = glob($filename."/*_t.jpg");
+					$num_photos = sizeof(glob($filename."/*_t.jpg"));
 
 					// Get date from thumbnail of header image, for ordering purposes
 					$exif_date = exif_read_data($filename.'/'.$meta['header'].'_t.jpg')['DateTimeOriginal'];
