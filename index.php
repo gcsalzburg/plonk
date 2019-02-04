@@ -32,6 +32,15 @@ if($f != ""){
 			$template['description'] = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
 				"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta['description']);
 			$template['background_img'] = '/'.$template['folder_src'].'/'.$meta['header'].'_k.jpg';
+
+			// Check if there are photos left to process
+			$to_process = false;
+/*
+			
+			foreach (glob($filename."/*_t.jpg") as $tmp_f) {
+				$num_photos++;
+			}*/
+			$template['to_process'] = true;
 		}
 	}
 }else{
@@ -55,10 +64,7 @@ if($f != ""){
 
 					// Count photos in folder
 					// We use the _t references for this purpose
-					$num_photos = 0;
-					foreach (glob($filename."/*_t.jpg") as $tmp_f) {
-						$num_photos++;
-					}
+					$num_photos = glob($filename."/*_t.jpg");
 
 					// Get date from thumbnail of header image, for ordering purposes
 					$exif_date = exif_read_data($filename.'/'.$meta['header'].'_t.jpg')['DateTimeOriginal'];
