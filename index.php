@@ -48,9 +48,17 @@ if($f != ""){
 				// Must be a -src folder
 				// Check for meta.json
 				if(file_exists($filename.'/meta.json')){
+
 					// If meta.json exists, display block for this album
 					$json = file_get_contents($filename.'/meta.json');
 					$meta = json_decode($json,true);
+
+					// Count photos in folder
+					// We use the _t references for this purpose
+					$num_photos = 0;
+					foreach (glob($filename."/*_t.jpg") as $tmp_f) {
+						$num_photos++;
+					}
 
 					// Get date from thumbnail of header image, for ordering purposes
 					$exif_date = exif_read_data($filename.'/'.$meta['header'].'_t.jpg')['DateTimeOriginal'];
@@ -58,11 +66,12 @@ if($f != ""){
 					
 					// Prepare template for this album
 					$template['albums'][] = array(
-						"title" 		=> $meta['title'],
-						"background" 	=> '/'.$filename.'/'.$meta['header'].'_c.jpg',
-						"folder"		=> substr($filename,0,strlen($filename)-4),
-						"date_time"		=> $thumb_date['year']."/".$thumb_date['month'],
-						"ts"			=> strtotime($exif_date)
+						"title" 			=> $meta['title'],
+						"background" 		=> '/'.$filename.'/'.$meta['header'].'_c.jpg',
+						"folder"			=> substr($filename,0,strlen($filename)-4),
+						"date_time"			=> $thumb_date['year']."/".$thumb_date['month'],
+						"num_pictures_text"	=> $num_photos." photo".(($num_photos === 1) ? "" : "s"),
+						"ts"				=> strtotime($exif_date)
 					);
 
 				}

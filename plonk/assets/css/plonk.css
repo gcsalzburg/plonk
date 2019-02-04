@@ -100,11 +100,21 @@ h3 a{
 .album h2{
     font-weight: 300;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     left: 0;
     margin: 0;
     font-size: 1.5em;
     padding: 15px;
+}
+.album h3{
+    font-weight: 300;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    font-size: 1em;
+    padding: 15px;
+    width: auto;
 }
 .album:hover h2{
     text-decoration:underline;
