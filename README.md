@@ -54,6 +54,7 @@ Add a file called `meta.json` to the album folder wWith some of the following op
 * Add size scaling icons for grid display (just 2?)
 * Fix URL parsing in descriptions
 * Add OG meta data for each album
+* Turn off download original button if needed
 
 ## Acknowledgements
 
