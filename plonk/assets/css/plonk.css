@@ -173,6 +173,22 @@ h3 a{
     padding: 1em 0;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.5em;
+    position: relative;
+}
+.process:before{
+    content:"";
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width: 0%;
+    background: #96D128;
+    z-index: 10;
+    transition: 0.2s all;
+}
+.process_msg{
+    position: relative;
+    z-index: 20;
 }
 .process span{
     font-weight: 700;

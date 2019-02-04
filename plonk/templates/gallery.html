@@ -20,7 +20,9 @@
 
 	{{#to_process}}
 	<section id="process" class="process">
-		Processing <span id="process_filename">filename</span> (<span id="process_current">{{process_current}}</span> of <span id="process_total">{{process_total}}</span>)
+		<div class="process_msg" id="process_msg">
+			Processing <span id="process_filename">{{process_filename}}</span> (<span id="process_current">{{process_current}}</span> of <span id="process_total">{{process_total}}</span>)
+		</div>
 	</section>
 	{{/to_process}}
 
