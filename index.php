@@ -32,15 +32,19 @@ if($f != ""){
 			$template['description'] = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
 				"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta['description']);
 			$template['background_img'] = '/'.$template['folder_src'].'/'.$meta['header'].'_k.jpg';
+		}
 
-			// Check if there are photos left to process
-			$to_process = false;
-/*
-			
-			foreach (glob($filename."/*_t.jpg") as $tmp_f) {
-				$num_photos++;
-			}*/
+		// Check if there are photos left to process
+		// Counts as jpgs without a _tnchko suffix
+		$to_process = glob($template['folder_src']."/*[^_][^tnchko].jpg");
+
+		if(sizeof($to_process) > 0){
 			$template['to_process'] = true;
+			$template['process_total'] = sizeof($to_process);
+			$template['process_current'] = 1;
+			$template['process_filename'] = $to_process[0];
+		}else{
+			$template['to_process'] = false;	
 		}
 	}
 }else{
