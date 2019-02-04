@@ -18,6 +18,12 @@
 		<h3>{{description}}</h3>
 	</header>
 
+	{{#to_process}}
+	<section id="process" class="process">
+		Processing <span id="process_filename">filename</span> (<span id="process_current">{{process_current}}</span> of <span id="process_total">{{process_total}}</span>)
+	</section>
+	{{/to_process}}
+
 	<main id="gallery" class="gallery" data-next="0" data-folder="{{folder}}">
     </main>
 
