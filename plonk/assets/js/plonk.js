@@ -4,17 +4,6 @@
 
 $(function(){
 
-    // Handler for photos to process
-    if($("#process").length){
-        $.getJSON("/plonk/process.php",{
-            f: $("#process").attr('data-filename')
-        },function(result){
-            console.log(result);
-        });
-    }
-
-
-
     // Load gallery justifier
     $("#gallery").justifiedGallery({
         rowHeight : 350,
@@ -79,6 +68,23 @@ $(function(){
             });
         }
     }
+    
+    // Handler for photos to process
+    if($("#process").length){
+        process_next($("#process").attr('data-filename'));
+    }else{
+        fetch_next();
+    }
 
-    fetch_next();
+    function process_next(filename){
+        $.getJSON("/plonk/process.php",{
+            f: filename
+        },function(result){
+            console.log(result);
+            if(!result.error && result.to_process){
+                $("#process_filename").text(result.process_filename_no_path);
+                process_next(result.process_filename);
+            }
+        });
+    }
 });

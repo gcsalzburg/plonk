@@ -26,8 +26,9 @@
 	</section>
 	{{/to_process}}
 
-	<main id="gallery" class="gallery" data-next="0" data-folder="{{folder}}">
-    </main>
+	{{^to_process}}
+	<main id="gallery" class="gallery" data-next="0" data-folder="{{folder}}"></main>
+	{{/to_process}}
 
 	<footer><a href="https://github.com/gcsalzburg/plonk">Plonk Gallery</a> © George Cave</footer> 
 
