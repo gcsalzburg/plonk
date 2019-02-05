@@ -2,7 +2,14 @@
 
 
 // Process URL params
-$filename =  substr(preg_replace("/[^a-zA-Z0-9_\-\/]/","",$_GET['filename']),0,100);
+$filename =  "../".substr(preg_replace("/[^a-zA-Z0-9_\-\/.]/","",$_GET['f']),0,100);
+
+
+$response = array(
+    "error" => false
+);
+
+$response['next'] = $filename;
 
 // Request file
 if(file_exists($filename)){
@@ -10,7 +17,10 @@ if(file_exists($filename)){
     // Process image
 
 }else{
-    exit();
+    //
+    $response['error'] = true;
 }
+
+echo json_encode($response);
 
 ?>

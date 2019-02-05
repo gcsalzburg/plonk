@@ -4,6 +4,17 @@
 
 $(function(){
 
+    // Handler for photos to process
+    if($("#process").length){
+        $.getJSON("/plonk/process.php",{
+            f: $("#process").attr('data-filename')
+        },function(result){
+            console.log(result);
+        });
+    }
+
+
+
     // Load gallery justifier
     $("#gallery").justifiedGallery({
         rowHeight : 350,
