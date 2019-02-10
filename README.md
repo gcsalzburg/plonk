@@ -12,13 +12,13 @@ This is achieved with no admin interface and no database. Upload your photos to 
 
 ## How to use
 
-> See folder `demo-src` for an example of how to set up the folders
+> See folder `albums/demo` for an example of how to set up the folders
 
 This projects requires a server running PHP7 or later (or probably earlier too).
 
 1. [Download this project here](https://github.com/gcsalzburg/plonk/archive/master.zip) and upload it into a folder on your server
-2. Create a folder called `albumname-src` in the directory next to this readme.
-2. ~~Upload your original photos into the `albumname-src` folder~~
+2. Create a folder for your album inside the `albums` directory.
+2. ~~Upload your original photos into your new folder~~
 3. Add files to the album with suffixes as follows:
 
 | _ | How to generate | Example |
@@ -30,7 +30,7 @@ This projects requires a server running PHP7 or later (or probably earlier too).
 | k | 2048 pixel max on widest side | DSC03317_k.jpg |
 | o | Original source image | DSC03317_o.jpg |
 
-4. The gallery will be available at the url `http://yourwebsite.com/folder-you-put-it-in/albumname`
+4. The gallery will be available at the url `http://yourwebsite.com/albumname`
 
 ## Customisation
 

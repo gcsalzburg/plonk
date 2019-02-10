@@ -1,6 +1,6 @@
 # Do not commit -src folders, except for the demo folder!
-*-src/
-!demo-src/
+albums/*
+!albums/demo/
 
 # Don't save favicon
 favicon.ico
