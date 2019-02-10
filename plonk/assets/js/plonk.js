@@ -76,14 +76,31 @@ $(function(){
         fetch_next();
     }
 
+
+
     function process_next(filename){
         $.getJSON("/plonk/process.php",{
             f: filename
         },function(result){
             console.log(result);
-            if(!result.error && result.to_process){
-                $("#process_filename").text(result.process_filename_no_path);
-                process_next(result.process_filename);
+            if(!result.error){
+                if(result.to_process){
+                    console.log(((parseInt($("#process").attr('data-current'))/parseInt($("#process").attr('data-total')))*100)+"%");
+                    $("#progress_bar").css('width', ((parseInt($("#process").attr('data-current'))/parseInt($("#process").attr('data-total')))*100)+"%" );
+    
+                    $("#process").attr('data-filename',result.process_filename);
+                    $("#process").attr('data-current',parseInt($("#process").attr('data-current'))+1);
+    
+                    $("#process_current").text($("#process").attr('data-current'));
+    
+                    $("#process_filename").text(result.process_filename_no_path);
+                    process_next(result.process_filename);
+
+                }else{
+                    // All done!
+                    $("#progress_bar").css('width', "100%" );
+                    $("#process_msg").html("<strong>Done!</strong> Reload page to see the album");
+                }
             }
         });
     }
