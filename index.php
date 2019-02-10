@@ -6,19 +6,20 @@ require_once('plonk/class.mustache.php');
 $template_html = "";
 $template = array();
 
-
-// Check the folder exists
 $f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['f']);
 
+// Check the folder exists
 if($f != ""){
 	// Must be showing a single gallery
 	$template_html = 'plonk/templates/gallery.html';
 
-	if(!file_exists($f.'-src')){
+	$folder_src = 'albums/'.$f;
+
+	if(!file_exists($folder_src)){
 		$template['title'] = "Unknown folder";
 	}else{
 		$template['folder'] = $f;
-		$template['folder_src'] = $f."-src";
+		$template['folder_src'] = $folder_src;
 
 		// Fetch metadata
 		if(!file_exists($template['folder_src'].'/meta.json')){
@@ -54,38 +55,36 @@ if($f != ""){
 
 	$template['albums'] = array();
 
-	$dir = new DirectoryIterator(dirname(__FILE__));
+	$dir = new DirectoryIterator('albums');
 	foreach ($dir as $fileinfo) {
 		if ($fileinfo->isDir()) {
 			$filename = $fileinfo->getFilename();
-			if( (substr($filename, -4) === "-src") && ($filename != "demo-src") ){
-				// Must be a -src folder
-				// Check for meta.json
-				if(file_exists($filename.'/meta.json')){
+			$path = 'albums/'.$filename;
+			// Check for meta.json
+			if(file_exists($path.'/meta.json')){
 
-					// If meta.json exists, display block for this album
-					$json = file_get_contents($filename.'/meta.json');
-					$meta = json_decode($json,true);
+				// If meta.json exists, display block for this album
+				$json = file_get_contents($path.'/meta.json');
+				$meta = json_decode($json,true);
 
-					// Count photos in folder
-					// We use the _t references for this purpose
-					$num_photos = sizeof(glob($filename."/*_t.jpg"));
+				// Count photos in folder
+				// We use the _t references for this purpose
+				$num_photos = sizeof(glob($path."/*_t.jpg"));
 
-					// Get date from thumbnail of header image, for ordering purposes
-					$exif_date = exif_read_data($filename.'/'.$meta['header'].'_t.jpg')['DateTimeOriginal'];
-					$thumb_date = date_parse($exif_date);
-					
-					// Prepare template for this album
-					$template['albums'][] = array(
-						"title" 			=> $meta['title'],
-						"background" 		=> '/'.$filename.'/'.$meta['header'].'_c.jpg',
-						"folder"			=> substr($filename,0,strlen($filename)-4),
-						"date_time"			=> $thumb_date['year']."/".$thumb_date['month'],
-						"num_pictures_text"	=> $num_photos." photo".(($num_photos === 1) ? "" : "s"),
-						"ts"				=> strtotime($exif_date)
-					);
+				// Get date from thumbnail of header image, for ordering purposes
+				$exif_date = exif_read_data($path.'/'.$meta['header'].'_t.jpg')['DateTimeOriginal'];
+				$thumb_date = date_parse($exif_date);
+				
+				// Prepare template for this album
+				$template['albums'][] = array(
+					"title" 			=> $meta['title'],
+					"background" 		=> '/'.$path.'/'.$meta['header'].'_c.jpg',
+					"folder"			=> $filename,
+					"date_time"			=> $thumb_date['year']."/".$thumb_date['month'],
+					"num_pictures_text"	=> $num_photos." photo".(($num_photos === 1) ? "" : "s"),
+					"ts"				=> strtotime($exif_date)
+				);
 
-				}
 			}
 		}
 	}
