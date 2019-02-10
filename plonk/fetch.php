@@ -18,7 +18,7 @@ $rtn_array = array(
 $folder = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['folder']);
 $start = preg_replace("/[^0-9]/","",$_GET['start']);
 
-$folder_src = $folder."-src";
+$folder_src = 'albums/'.$folder;
 
 // Check if folder and start are valid
 // Exit early if not

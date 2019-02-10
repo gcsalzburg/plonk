@@ -28,7 +28,7 @@ function get_image($filename,$title){
 $folder =  substr(preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['folder']),0,100);
 $img = substr(preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['img']),0,200);
 
-$request_file = '../' . $folder . '-src/' . $img . '_o.jpg';
+$request_file = '../albums/' . $folder . '/' . $img . '_o.jpg';
 
 // Request file
 if(file_exists($request_file)){
