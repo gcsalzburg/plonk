@@ -1,6 +1,7 @@
 # Do not commit -src folders, except for the demo folder!
 albums/*
 !albums/demo/
+reset.php
 
 # Don't save favicon
 favicon.ico
