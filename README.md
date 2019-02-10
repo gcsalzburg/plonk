@@ -18,19 +18,10 @@ This projects requires a server running PHP7 or later (or probably earlier too).
 
 1. [Download this project here](https://github.com/gcsalzburg/plonk/archive/master.zip) and upload it into a folder on your server
 2. Create a folder for your album inside the `albums` directory.
-2. ~~Upload your original photos into your new folder~~
-3. Add files to the album with suffixes as follows:
+3. Upload your original photos into your new folder (make sure images do not have a suffix like `_o` or `_t`)
+4. Visit the new gallery will be available at the url `http://yourwebsite.com/albumname`
 
-| _ | How to generate | Example |
-| --- | --- | -- |
-| t | 100 pixel max on widest side | DSC03317_t.jpg |
-| n | 320 pixel max on widest side | DSC03317_n.jpg |
-| c | 800 pixel max on widest side | DSC03317_c.jpg |
-| h | 1600 pixel max on widest side | DSC03317_h.jpg |
-| k | 2048 pixel max on widest side | DSC03317_k.jpg |
-| o | Original source image | DSC03317_o.jpg |
-
-4. The gallery will be available at the url `http://yourwebsite.com/albumname`
+The first time you visit the gallery it will generate all of the thumbnails it needs. This takes a while! Subsequent loads will show the gallery :).
 
 ## Customisation
 
@@ -46,10 +37,22 @@ Add a file called `meta.json` to the album folder wWith some of the following op
 }
 ```
 
+## Advanced users
+
+If you wish to generate the thumbnails yourself (for example, for better image compression or better sharpening on the final output), then upload your images into your album folder as follows:
+
+| _ | How to generate | Example |
+| --- | --- | -- |
+| t | 100 pixel max on widest side | DSC03317_t.jpg |
+| n | 320 pixel max on widest side | DSC03317_n.jpg |
+| c | 800 pixel max on widest side | DSC03317_c.jpg |
+| h | 1600 pixel max on widest side | DSC03317_h.jpg |
+| k | 2048 pixel max on widest side | DSC03317_k.jpg |
+| o | Original source image | DSC03317_o.jpg |
+
 ## Future
 
 * Add full album zip download
-* Create script to generate thumbnails on server on first load, for any images found that don't yet have thumbnails (with callback for one-by-one processing)
 * Add original download link to swipebox view
 * Add size scaling icons for grid display (just 2?)
 * Fix URL parsing in descriptions
