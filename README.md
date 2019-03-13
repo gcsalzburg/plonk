@@ -27,7 +27,7 @@ The first time you visit the gallery it will generate all of the thumbnails it n
 
 A small amount of page customisation is possible.
 
-Add a file called `meta.json` to the album folder wWith some of the following options:
+Add a file called `meta.json` to the album folder with some of the following options:
 
 ```json
 {
@@ -59,7 +59,7 @@ If you wish to generate the thumbnails yourself (for example, for better image c
 
 ## Acknowledgements
 
-This project is possible thanks to these wonderful projects:
+This project is made possible thanks to these wonderful projects:
 
 * [Justified Gallery project](https://github.com/miromannino/Justified-Gallery) - creates the main gallery view
 * [Swipebox](http://brutaldesign.github.io/swipebox/) - Touchable jQuery lightbox
