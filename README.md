@@ -55,7 +55,6 @@ If you wish to generate the thumbnails yourself (for example, for better image c
 * Add full album zip download
 * Add original download link to swipebox view
 * Add size scaling icons for grid display (just 2?)
-* Add OG meta data for each album
 * Turn off download original button if needed
 
 ## Acknowledgements

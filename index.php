@@ -30,8 +30,12 @@ if($f != ""){
 			$meta = json_decode($json,true);
 
 			$template['title'] = $meta['title'];
-			$template['description'] = preg_replace('/([a-z]+\:\/\/[a-z0-9\-\.]+\.[a-z]+(:[a-z0-9]*)?\/?([a-z0-9\-\._\:\?\,\'\/\\\+&%\$#\=~])*[^\.\,\)\(\s])/i', '<a href="\1">\1</a>', strip_tags($meta['description']));
+			$template['description_no_links'] = strip_tags($meta['description']);
+			$template['description'] = preg_replace('/([a-z]+\:\/\/[a-z0-9\-\.]+\.[a-z]+(:[a-z0-9]*)?\/?([a-z0-9\-\._\:\?\,\'\/\\\+&%\$#\=~])*[^\.\,\)\(\s])/i', '<a href="\1">\1</a>', $template['description_no_links']);
 			$template['background_img'] = '/'.$template['folder_src'].'/'.$meta['header'].'_k.jpg';
+
+			$template['og_url'] = (!empty($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/'.$template['folder'];
+			$template['og_img'] = (!empty($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/'.$template['folder_src'].'/'.$meta['header'].'_c.jpg';
 		}
 
 		// Check if there are photos left to process
