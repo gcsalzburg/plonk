@@ -30,8 +30,7 @@ if($f != ""){
 			$meta = json_decode($json,true);
 
 			$template['title'] = $meta['title'];
-			$template['description'] = preg_replace('#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
-				"<a href=\"$1\" target=\"_blank\">$3</a>$4", $meta['description']);
+			$template['description'] = preg_replace('/([a-z]+\:\/\/[a-z0-9\-\.]+\.[a-z]+(:[a-z0-9]*)?\/?([a-z0-9\-\._\:\?\,\'\/\\\+&%\$#\=~])*[^\.\,\)\(\s])/i', '<a href="\1">\1</a>', strip_tags($meta['description']));
 			$template['background_img'] = '/'.$template['folder_src'].'/'.$meta['header'].'_k.jpg';
 		}
 
