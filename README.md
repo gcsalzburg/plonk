@@ -33,7 +33,7 @@ Add a file called `meta.json` to the album folder wWith some of the following op
 {
     "header": "Basename (without suffix) of the file to use as header image, e.g. DSC00317",
     "title": "Title of album",
-    "description": "Sentence or two about the album. Can include links."
+    "description": "Sentence or two about the album. Web addresses are converted to links."
 }
 ```
 
@@ -55,7 +55,6 @@ If you wish to generate the thumbnails yourself (for example, for better image c
 * Add full album zip download
 * Add original download link to swipebox view
 * Add size scaling icons for grid display (just 2?)
-* Fix URL parsing in descriptions
 * Add OG meta data for each album
 * Turn off download original button if needed
 
