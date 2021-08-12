@@ -6,7 +6,10 @@ require_once('plonk/class.mustache.php');
 $template_html = "";
 $template = array();
 
-$f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['f']);
+$f = "";
+if(isset($_GET['f'])){
+	$f = preg_replace("/[^a-zA-Z0-9_\-]/","",$_GET['f']);
+}
 
 // Check the folder exists
 if($f != ""){
@@ -40,7 +43,9 @@ if($f != ""){
 
 		// Check if there are photos left to process
 		// Counts as jpgs without a _tnchko suffix
-		$to_process = glob($template['folder_src']."/*[^_][^tnchko].jpg");
+		$all = glob($template['folder_src']."/*.jpg");
+		$processed = glob($template['folder_src']."/*_[tnchko].jpg");
+		$to_process = array_values(array_diff($all, $processed));
 
 		if(sizeof($to_process) > 0){
 			$template['to_process'] = true;
@@ -74,19 +79,26 @@ if($f != ""){
 				// We use the _t references for this purpose
 				$num_photos = sizeof(glob($path."/*_t.jpg"));
 
+				$new_album = array(
+					"title" 			=> $meta['title'],
+					"background" 	=> '/'.$path.'/'.$meta['header'].'_c.jpg',
+					"folder"			=> $filename,
+					"date_time"		=> "",
+					"num_pictures_text"	=> $num_photos." photo".(($num_photos === 1) ? "" : "s"),
+					"ts"				=> 0
+				);
+
 				// Get date from thumbnail of header image, for ordering purposes
-				$exif_date = exif_read_data($path.'/'.$meta['header'].'_t.jpg')['DateTimeOriginal'];
-				$thumb_date = date_parse($exif_date);
+				if(file_exists($path.'/'.$meta['header'].'_t.jpg')){
+					$exif_date = exif_read_data($path.'/'.$meta['header'].'_t.jpg')['DateTimeOriginal'];
+					$thumb_date = date_parse($exif_date);
+
+					$new_album["date_time"] = $thumb_date['year']."/".$thumb_date['month'];
+					$new_album["ts"] = strtotime($exif_date);
+				}
 				
 				// Prepare template for this album
-				$template['albums'][] = array(
-					"title" 			=> $meta['title'],
-					"background" 		=> '/'.$path.'/'.$meta['header'].'_c.jpg',
-					"folder"			=> $filename,
-					"date_time"			=> $thumb_date['year']."/".$thumb_date['month'],
-					"num_pictures_text"	=> $num_photos." photo".(($num_photos === 1) ? "" : "s"),
-					"ts"				=> strtotime($exif_date)
-				);
+				$template['albums'][] = $new_album;
 
 			}
 		}
